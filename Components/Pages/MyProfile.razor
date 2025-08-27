@@ -1,0 +1,90 @@
+@page "/myprofile"
+@rendermode InteractiveServer
+
+<PageTitle>My Profile</PageTitle>
+<div class="d-flex justify-content-between">    
+    <div>
+        <H3>Create new Person</H3>
+        <div>
+            <label for="">Name:</label>
+            <input type="text" @bind=person.Name>
+        </div>
+        <div>
+            <label for="">Surname:</label>
+            <input type="text" @bind=person.Surname>
+        </div>
+        <div>
+            <label for="">Age:</label>
+            <input type="text" @bind=person.Age>
+        </div>
+        <div>
+            <label for="">Address:</label>
+            <input type="text" @bind=person.Address>
+        </div>
+    </div>
+    <div>
+        <H3>Update Person</H3>
+        <div>
+            <label for="">Name:</label>
+            <input type="text" @bind=updatablePerson.Name>
+        </div>
+        <div>
+            <label for="">Surname:</label>
+            <input type="text" @bind=updatablePerson.Surname>
+        </div>
+        <div>
+            <label for="">Age:</label>
+            <input type="text" @bind=updatablePerson.Age>
+        </div>
+        <div>
+            <label for="">Address:</label>
+            <input type="text" @bind=updatablePerson.Address>
+        </div>
+    </div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in persons)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td>@person.Surname</td>
+                <td>@person.Address</td>
+                <td>@person.Age</td>
+                <td>
+                <button class="btn btn-primary" @onclick="() => Delete(person.Id)">Delete</button>
+                </td>
+                <td>
+                <button class="btn btn-primary" @onclick="() => Edit(person.Id)">Edit</button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+            
+<button class="btn btn-primary" @onclick="UpdateUser">Update</button>
+<button class="btn btn-primary" @onclick="AddInfoToList">Add My Info</button>
+<button class="btn btn-primary" @onclick="SortBySum">Sort By Sum</button>
+<button class="btn btn-primary" @onclick="SortByName">Sort By Info</button>
+
+
+<div>
+    <p></p>
+</div>
+
+
